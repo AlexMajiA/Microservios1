@@ -1,63 +1,36 @@
 package org.microservicios1.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 public abstract class Stone {
 
     //Atributos
     String color;
     String name;
     String location;
-    Integer energyLeven;
+    Integer energyLevel;
     Integer numberOfSides;
 
+    //Añado una constante puesto que todas las gemas tienen 6 lados.
+    public static final int NUMBER_SIDES =6;
+
     //Constructor.
-    public Stone(String color, String name, String location, Integer energyLeven, Integer numberOfSides) {
+    public Stone(String color, String name, String location, Integer energyLevel) {
         this.color = color;
         this.name = name;
         this.location = location;
-        this.energyLeven = energyLeven;
-        this.numberOfSides = numberOfSides;
+        this.energyLevel = energyLevel;
+        this.numberOfSides = NUMBER_SIDES;
     }
 
-    //Guetters y Setters.
 
+    public abstract void usePower();
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Integer getNumberOfSides() {
-        return numberOfSides;
-    }
-
-    public void setNumberOfSides(Integer numberOfSides) {
-        this.numberOfSides = numberOfSides;
-    }
-
-    public Integer getEnergyLeven() {
-        return energyLeven;
-    }
-
-    public void setEnergyLeven(Integer energyLeven) {
-        this.energyLeven = energyLeven;
-    }
 }
