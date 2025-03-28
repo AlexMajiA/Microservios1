@@ -12,11 +12,11 @@ import lombok.ToString;
 public abstract class Stone {
 
     //Atributos
-    String color;
-    String name;
-    String location;
-    Integer energyLevel;
-    Integer numberOfSides;
+    protected String color;
+    protected String name;
+    protected String location;
+    protected Integer energyLevel;
+    protected Integer numberOfSides;
 
     //Añado una constante puesto que todas las gemas tienen 6 lados.
     public static final int NUMBER_SIDES =6;
