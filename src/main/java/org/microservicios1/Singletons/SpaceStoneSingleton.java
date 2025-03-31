@@ -20,7 +20,7 @@ public class SpaceStoneSingleton {
             log.info("Creating first instance.");
 
             // Me aseguro de que solo un hilo pueda acceder.
-            synchronized (spaceStoneInstance){
+            synchronized (SoulStoneSingleton.class){
 
                 // Compruebo que no haya sido creada por otro hilo.
                 if (spaceStoneInstance == null){

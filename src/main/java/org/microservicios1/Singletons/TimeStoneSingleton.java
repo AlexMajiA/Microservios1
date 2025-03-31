@@ -20,7 +20,7 @@ public class TimeStoneSingleton {
             log.info("Creating first instance.");
 
             // Me aseguro de que solo un hilo pueda acceder.
-            synchronized (timeStoneInstance){
+            synchronized (TimeStoneSingleton.class){
 
                 // Compruebo que no haya sido creada por otro hilo.
                 if (timeStoneInstance == null){
