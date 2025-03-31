@@ -1,12 +1,13 @@
 package org.microservicios1.Singletons;
 
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
 import org.microservicios1.models.PowerStone;
 
 @Log
 //Constructor sin parámetros.
-@NoArgsConstructor
+@NoArgsConstructor (access = AccessLevel.PRIVATE)
 
 public class PowerStoneSingleton {
 
