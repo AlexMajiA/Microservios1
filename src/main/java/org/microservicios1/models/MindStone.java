@@ -27,26 +27,30 @@ public class MindStone extends Stone{
     }
 
     public MindStone getPrototype(){
-        try {
-
+        try(
             // Convert objetct into bytes
             final var baos = new ByteArrayOutputStream();
             final var oos = new ObjectOutputStream(baos);
+            ) {
 
-            // Seralize object (Clone)
+            // Seralize object and Clone.
             oos.writeObject(this);
+            oos.flush();
 
-            // Deserialize
-            final var bais = new ByteArrayInputStream(baos.toByteArray());
-            final var ois = new ObjectInputStream(bais);
-
-            //Cast
-            return (MindStone) ois.readObject();
+            try(
+                // Deserialize
+                final var bais = new ByteArrayInputStream(baos.toByteArray());
+                final var ois = new ObjectInputStream(bais);
+                ){
+                //Cast
+                return (MindStone) ois.readObject();
+            }
 
         } catch (IOException |ClassNotFoundException e){
             log.warning("Cant cast or read class.");
-            Throw new RuntimeException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
 
         }
+
     }
 }
