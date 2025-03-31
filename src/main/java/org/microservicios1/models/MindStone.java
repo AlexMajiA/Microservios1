@@ -1,8 +1,12 @@
 package org.microservicios1.models;
 
 import lombok.ToString;
+import lombok.extern.java.Log;
+
+import java.io.*;
 
 @ToString
+@Log
 public class MindStone extends Stone{
 
     //Constantes.
@@ -20,5 +24,29 @@ public class MindStone extends Stone{
         //Business logic
         System.out.println("Mind control in stone: " + super.toString());
 
+    }
+
+    public MindStone getPrototype(){
+        try {
+
+            // Convert objetct into bytes
+            final var baos = new ByteArrayOutputStream();
+            final var oos = new ObjectOutputStream(baos);
+
+            // Seralize object (Clone)
+            oos.writeObject(this);
+
+            // Deserialize
+            final var bais = new ByteArrayInputStream(baos.toByteArray());
+            final var ois = new ObjectInputStream(bais);
+
+            //Cast
+            return (MindStone) ois.readObject();
+
+        } catch (IOException |ClassNotFoundException e){
+            log.warning("Cant cast or read class.");
+            Throw new RuntimeException(e.getMessage());
+
+        }
     }
 }

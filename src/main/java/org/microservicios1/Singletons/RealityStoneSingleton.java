@@ -16,7 +16,7 @@ public class RealityStoneSingleton {
     public static RealityStone getInstance(){
 
         if (realityStoneInstance == null){
-            log.info("Creating first Instance.");
+            log.info("Creating first Instance: " + RealityStoneSingleton.class);
 
             // Me aseguro de que solo un hilo pueda acceder.
             synchronized (RealityStoneSingleton.class){

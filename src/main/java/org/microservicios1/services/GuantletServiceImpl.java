@@ -1,6 +1,7 @@
 package org.microservicios1.services;
 
 import lombok.extern.java.Log;
+import org.microservicios1.Singletons.MindStoneSingleton;
 import org.microservicios1.models.RealityStone;
 import org.microservicios1.models.Stone;
 
@@ -8,11 +9,11 @@ import org.microservicios1.models.Stone;
 @Log
 public class GuantletServiceImpl implements GuantletService {
 
-    private final Stone reality = new RealityStone();
+    private final Stone reality = MindStoneSingleton.getInstance();
 
 
     @Override
     public void useGuantlet(String stoneName) {
-        log.info("Use stone" + reality);
+        log.info("Use stone: " + reality);
     }
 }

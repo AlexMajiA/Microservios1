@@ -18,7 +18,7 @@ public class PowerStoneSingleton {
         public static PowerStone getInstance(){
 
             if (powerStoneInstance == null){
-                log.info("Creating first instance.");
+                log.info("Creating first instance: " + PowerStoneSingleton.class);
 
                 // Me aseguro de que solo un hilo pueda acceder.
                 synchronized (PowerStoneSingleton.class){

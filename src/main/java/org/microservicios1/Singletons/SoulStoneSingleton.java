@@ -17,7 +17,7 @@ public class SoulStoneSingleton {
     public static SoulStone getInstance(){
 
         if (soulStoneInstance == null){
-            log.info("Creating first instance.");
+            log.info("Creating first instance: " + SoulStoneSingleton.class);
 
             // Me aseguro de que solo un hilo pueda acceder.
             synchronized (SpaceStoneSingleton.class){

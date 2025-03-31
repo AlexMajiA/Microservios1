@@ -17,7 +17,7 @@ public class MindStoneSingleton {
 
 
         if (mindStoneInstance == null){
-            log.info("Creating first instance");
+            log.info("Creating first instance: " + MindStoneSingleton.class);
 
             // Me aseguro de que solo un hilo pueda acceder.
             synchronized (MindStoneSingleton.class){

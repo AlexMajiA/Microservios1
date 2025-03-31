@@ -17,7 +17,7 @@ public class TimeStoneSingleton {
     public static TimeStone getInstance(){
 
         if (timeStoneInstance == null){
-            log.info("Creating first instance.");
+            log.info("Creating first instance: " + TimeStoneSingleton.class);
 
             // Me aseguro de que solo un hilo pueda acceder.
             synchronized (TimeStoneSingleton.class){

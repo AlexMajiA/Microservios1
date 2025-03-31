@@ -1,5 +1,6 @@
 package org.microservicios1;
 
+import org.microservicios1.Singletons.MindStoneSingleton;
 import org.microservicios1.models.*;
 import org.microservicios1.services.GuantletServiceImpl;
 
@@ -42,11 +43,8 @@ public class Main {
         //Instancio una variable de la interfaz.
         final var guantletService = new GuantletServiceImpl();
 
-        //Llamo al método de la interfaz.
-        guantletService.useGuantlet("");
-
-
-
+        //Llamo al metodo de la interfaz.
+         guantletService.useGuantlet("");
 
 
     }
