@@ -13,9 +13,12 @@ public class MindStoneSingleton {
 
     //Metodo para acceder a la instancia.
     public static MindStone getInstance(){
+
         if (mindStoneInstance == null){
             log.info("Creating first instance");
+
             synchronized (MindStoneSingleton.class){
+
                 if (mindStoneInstance == null){
                     mindStoneInstance = new MindStone();
                 }
