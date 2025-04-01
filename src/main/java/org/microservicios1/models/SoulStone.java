@@ -1,8 +1,12 @@
 package org.microservicios1.models;
 
 import lombok.ToString;
+import lombok.extern.java.Log;
+
+import java.io.*;
 
 @ToString
+@Log
 public class SoulStone extends Stone{
 
     //Constantes.
@@ -19,5 +23,32 @@ public class SoulStone extends Stone{
     public void usePower() {
         //Business logic
         System.out.println("Total control of person: " + super.toString());
+    }
+
+    public SoulStone getPrototype() {
+        try (
+                // Convert objetct into bytes
+                final var baos = new ByteArrayOutputStream();
+                final var oos = new ObjectOutputStream(baos);
+        ) {
+
+            // Seralize object and Clone.
+            oos.writeObject(this);
+            oos.flush();
+
+            try (
+                    // Deserialize
+                    final var bais = new ByteArrayInputStream(baos.toByteArray());
+                    final var ois = new ObjectInputStream(bais);
+            ) {
+                //Cast
+                return (SoulStone) ois.readObject();
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            log.warning("Cant cast or read class.");
+            throw new RuntimeException(e.getMessage());
+
+        }
     }
 }

@@ -4,8 +4,8 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 
 import java.io.*;
-
-@ToString
+//Llama al constructor del padre, como este tiene ToString, implementa sus hijos.
+@ToString (callSuper = true)
 @Log
 public class MindStone extends Stone{
 

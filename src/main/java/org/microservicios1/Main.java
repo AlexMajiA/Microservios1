@@ -6,7 +6,7 @@ import org.microservicios1.services.GuantletServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
-
+/*
     final var mind = new MindStone();
     final var power = new PowerStone();
     final var reality = new RealityStone();
@@ -45,6 +45,19 @@ public class Main {
 
         //Llamo al metodo de la interfaz.
          guantletService.useGuantlet("");
+*/
+
+        // Instancia 1
+        final var mind = new MindStone();
+
+        System.out.println(mind);
+        System.out.println(System.identityHashCode(mind));
+
+        //Esto genera un Clone, pero este tiene un hashCode diferente por lo que son objetos diferentes.
+        //Instace 2
+        final var mindPrototype = mind.getPrototype();
+        System.out.println(mindPrototype);
+        System.out.println(System.identityHashCode(mindPrototype));
 
 
     }
