@@ -27,12 +27,12 @@ public class SoulStone extends Stone{
 
     public SoulStone getPrototype() {
         try (
-                // Convert objetct into bytes
+                // Convert object into bytes
                 final var baos = new ByteArrayOutputStream();
                 final var oos = new ObjectOutputStream(baos);
         ) {
 
-            // Seralize object and Clone.
+            // Serialize object and Clone.
             oos.writeObject(this);
             oos.flush();
 

@@ -12,7 +12,7 @@ public class MindStone extends Stone{
     //Constantes.
     private static final String COLOR = "Yelow";
     private static final String NAME = "Power Stone";
-    private static final String LOCATION = "Mr Vision";
+    private static final String LOCATION = "Scepter";
     private static final int ENERGY_lEVEL = 4;
 
     public MindStone() {

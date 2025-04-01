@@ -7,7 +7,7 @@ import java.io.*;
 
 @ToString
 @Log
-public class PowerStone extends Stone{
+public class PowerStone extends Stone {
 
     //Constantes.
     private static final String COLOR = "Purple";
@@ -28,8 +28,8 @@ public class PowerStone extends Stone{
     }
 
 
-    public PowerStone getPrototype(){
-        try(
+    public PowerStone getPrototype() {
+        try (
                 // Convert objetct into bytes
                 final var baos = new ByteArrayOutputStream();
                 final var oos = new ObjectOutputStream(baos);
@@ -39,19 +39,20 @@ public class PowerStone extends Stone{
             oos.writeObject(this);
             oos.flush();
 
-            try(
+            try (
                     // Deserialize
                     final var bais = new ByteArrayInputStream(baos.toByteArray());
                     final var ois = new ObjectInputStream(bais);
-            ){
+            ) {
                 //Cast
                 return (PowerStone) ois.readObject();
             }
 
-        } catch (IOException | ClassNotFoundException e){
+        } catch (IOException | ClassNotFoundException e) {
             log.warning("Cant cast or read class.");
             throw new RuntimeException(e.getMessage());
 
         }
 
     }
+}
