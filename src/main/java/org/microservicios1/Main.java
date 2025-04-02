@@ -7,6 +7,8 @@ import org.microservicios1.models.*;
 import org.microservicios1.services.GuantletService;
 import org.microservicios1.services.GuantletServiceImpl;
 
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
 /*
@@ -133,6 +135,30 @@ public class Main {
         var spaceFactory = new SpaceStoneFactory();
         var timeFactory = new TimeStoneFactory();
 
+        //Creación de instancias para la DI por dependencias.
+        var mind = mindFactory.createStone();
+        var power = powerFactory.createStone();
+        var reality = realityFactory.createStone();
+        var soul = soulFactory.createStone();
+        var space = spaceFactory.createStone();
+        var time = timeFactory.createStone();
+
+        Map<String, Stone> instances = Map.of(
+                "mind", mind,
+                "power", power,
+                "reality", reality,
+                "soul", soul,
+                "space", space,
+                "time", time
+        );
+
+        //Inyección de dependencias (DI) via propiedad.
+        final var guantletService = new GuantletServiceImpl();
+
+        //Inyección de dependencias (DI) via propiedad.
+        guantletService.setStones(instances);
+
+    /*
         //Inyección de dependencias (DI) con constructor.
         final var guantletService = new GuantletServiceImpl(
                 realityFactory.createStone(),
@@ -142,6 +168,8 @@ public class Main {
                 spaceFactory.createStone(),
                 timeFactory.createStone()
                  );
+
+     */
     /*
         // Inyección de dependencias (DI) via setter.
         guantletService.setMind(mindFactory.createStone());

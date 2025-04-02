@@ -1,26 +1,31 @@
 package org.microservicios1.services;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.microservicios1.Singletons.MindStoneSingleton;
 import org.microservicios1.models.RealityStone;
 import org.microservicios1.models.Stone;
 
+import java.lang.reflect.Field;
+import java.util.Map;
+
 //@Service
 @Log
 //@Setter
-@AllArgsConstructor
+//@AllArgsConstructor
+@NoArgsConstructor
 public class GuantletServiceImpl implements GuantletService {
 
     // NO es una inyección de dependencias.
     //private final Stone reality = MindStoneSingleton.getInstance();
-    private final Stone reality;
-    private final Stone power;
-    private final Stone mind;
-    private final Stone soul;
-    private final Stone space;
-    private final Stone time;
+    private Stone reality;
+    private Stone power;
+    private Stone mind;
+    private Stone soul;
+    private Stone space;
+    private Stone time;
 
 
 
@@ -58,4 +63,25 @@ public class GuantletServiceImpl implements GuantletService {
     }
 
  */
+
+    //Inyección de dependencias (DI) via propiedad.
+    public void setStones(Map<String, Stone> stones){
+
+        stones.forEach((fieldName, stoneDependency) -> {
+            try {
+                Field field = this.getClass().getDeclaredField(fieldName);
+                field.setAccessible(true);
+                field.set(this, stoneDependency);   //Inyección de dependencias.
+                log.info("Dependency injection by field " +fieldName);
+
+            }catch (NoSuchFieldException | IllegalAccessException ex){
+                log.warning("Error on DI by fields");
+                ex.getMessage();
+            }
+        });
+    }
+
+
+
+
 }
