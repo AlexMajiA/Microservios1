@@ -10,7 +10,9 @@ public class PowerStoneFactory extends ConfigurableStoneFactory{
     public Stone createStone() {
 
         // Error handling
+        // Verifica si la configuración indica que debe ser Singleton.
         if (super.isSingleton()){
+            // Si es Singleton, devuelve la única instancia de PowerStone.
             return PowerStoneSingleton.getInstance();
         }else {
             return Prototypes.powerPrototype.buildPrototype(new PowerStone());
