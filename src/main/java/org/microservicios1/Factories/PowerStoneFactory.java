@@ -15,6 +15,7 @@ public class PowerStoneFactory extends ConfigurableStoneFactory{
             // Si es Singleton, devuelve la única instancia de PowerStone.
             return PowerStoneSingleton.getInstance();
         }else {
+            // Si no es Singleton, crea una nueva instancia utilizando el Prototype.
             return Prototypes.powerPrototype.buildPrototype(new PowerStone());
         }
     }
