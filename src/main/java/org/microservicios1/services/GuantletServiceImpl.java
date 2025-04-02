@@ -14,7 +14,7 @@ import java.util.Map;
 //@Service
 @Log
 //@Setter
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class GuantletServiceImpl implements GuantletService {
 

@@ -134,7 +134,7 @@ public class Main {
         var soulFactory = new SoulStoneFactory();
         var spaceFactory = new SpaceStoneFactory();
         var timeFactory = new TimeStoneFactory();
-
+    /*
         //Creación de instancias para la DI por dependencias.
         var mind = mindFactory.createStone();
         var power = powerFactory.createStone();
@@ -142,6 +142,16 @@ public class Main {
         var soul = soulFactory.createStone();
         var space = spaceFactory.createStone();
         var time = timeFactory.createStone();
+
+     */
+
+        //Creación de instancias para la DI por constructor (2).
+        MindStone mind = (MindStone) mindFactory.createStone();
+        PowerStone power = (PowerStone) powerFactory.createStone();
+        RealityStone reality = (RealityStone) realityFactory.createStone();
+        SoulStone soul = (SoulStone) soulFactory.createStone();
+        SpaceStone space = (SpaceStone) spaceFactory.createStone();
+        TimeStone time = (TimeStone) timeFactory.createStone();
 
         Map<String, Stone> instances = Map.of(
                 "mind", mind,
@@ -153,10 +163,13 @@ public class Main {
         );
 
         //Inyección de dependencias (DI) via propiedad.
-        final var guantletService = new GuantletServiceImpl();
+       // final var guantletService = new GuantletServiceImpl();
 
         //Inyección de dependencias (DI) via propiedad.
-        guantletService.setStones(instances);
+        //guantletService.setStones(instances);
+
+        //DI por constructor (2)
+        final var guantletService = new GuantletServiceImpl(mind, power, reality, soul, space, time);
 
     /*
         //Inyección de dependencias (DI) con constructor.
@@ -170,6 +183,8 @@ public class Main {
                  );
 
      */
+
+
     /*
         // Inyección de dependencias (DI) via setter.
         guantletService.setMind(mindFactory.createStone());
