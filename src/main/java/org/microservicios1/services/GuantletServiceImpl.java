@@ -1,5 +1,6 @@
 package org.microservicios1.services;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.microservicios1.Singletons.MindStoneSingleton;
@@ -8,21 +9,20 @@ import org.microservicios1.models.Stone;
 
 //@Service
 @Log
-@Setter
+//@Setter
+@AllArgsConstructor
 public class GuantletServiceImpl implements GuantletService {
 
     // NO es una inyección de dependencias.
     //private final Stone reality = MindStoneSingleton.getInstance();
-    private Stone reality;
-    private Stone power;
-    private Stone mind;
-    private Stone soul;
-    private Stone space;
-    private Stone time;
+    private final Stone reality;
+    private final Stone power;
+    private final Stone mind;
+    private final Stone soul;
+    private final Stone space;
+    private final Stone time;
 
-    //Constructor sin parámetros.
-    public GuantletServiceImpl() {
-    }
+
 
     @Override
     public void useGuantlet(String stoneName) {

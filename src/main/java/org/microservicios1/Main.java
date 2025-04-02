@@ -133,9 +133,16 @@ public class Main {
         var spaceFactory = new SpaceStoneFactory();
         var timeFactory = new TimeStoneFactory();
 
-        //
-        final var guantletService = new GuantletServiceImpl();
-
+        //Inyección de dependencias (DI) con constructor.
+        final var guantletService = new GuantletServiceImpl(
+                realityFactory.createStone(),
+                powerFactory.createStone(),
+                mindFactory.createStone(),
+                soulFactory.createStone(),
+                spaceFactory.createStone(),
+                timeFactory.createStone()
+                 );
+    /*
         // Inyección de dependencias (DI) via setter.
         guantletService.setMind(mindFactory.createStone());
         guantletService.setPower(powerFactory.createStone());
@@ -143,6 +150,7 @@ public class Main {
         guantletService.setSoul(soulFactory.createStone());
         guantletService.setSpace(spaceFactory.createStone());
         guantletService.setTime(timeFactory.createStone());
+    */
 
         //
         guantletService.useGuantlet("mind");
