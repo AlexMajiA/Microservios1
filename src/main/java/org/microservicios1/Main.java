@@ -1,5 +1,6 @@
 package org.microservicios1;
 
+import org.microservicios1.Factories.*;
 import org.microservicios1.Prototype.Prototypes;
 import org.microservicios1.Singletons.MindStoneSingleton;
 import org.microservicios1.models.*;
@@ -62,7 +63,7 @@ public class Main {
         System.out.println(System.identityHashCode(mindPrototype));
 */
 //----------------------------------------------------------------------------------------------------------------------
-
+/*
         // Instancia 1
         final var mind = new MindStone();
 
@@ -80,6 +81,42 @@ public class Main {
         final var mindPrototype2 = Prototypes.mindPrototype.buildPrototype(mind);
         System.out.println(mindPrototype2);
         System.out.println(System.identityHashCode(mindPrototype2));
+*/
+//----------------------------------------------------------------------------------------------------------------------
+
+        //Seteo una propiedad. (Puedo elegir entre singleton o prototype)
+        System.setProperty("scope", "prototype");
+
+        //Creo una gema de la mente.
+        final var mindStoneFactory = new MindStoneFactory();
+        var mindStone = mindStoneFactory.createStone();
+
+        //Creo una gema del poder.
+        final var powerStoneFactory = new PowerStoneFactory();
+        var powerStone = powerStoneFactory.createStone();
+
+        //Creo una gema del realidad.
+        final var realityStoneFactory = new RealityStoneFactory();
+        var realityStone = realityStoneFactory.createStone();
+
+        //Creo una gema del alma.
+        final var soulStoneFactory = new SoulStoneFactory();
+        var soulStone = soulStoneFactory.createStone();
+
+        //Creo una gema del spacio.
+        final var spaceStoneFactory = new SpaceStoneFactory();
+        var spaceStone = spaceStoneFactory.createStone();
+
+        //Creo una gema del tiempo.
+        final var timeStoneFactory = new TimeStoneFactory();
+        var timeStone = timeStoneFactory.createStone();
+
+        System.out.println(mindStone);
+        System.out.println(powerStone);
+        System.out.println(realityStone);
+        System.out.println(soulStone);
+        System.out.println(spaceStone);
+        System.out.println(timeStone);
 
 
     }

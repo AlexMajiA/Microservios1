@@ -5,7 +5,7 @@ import org.microservicios1.Singletons.SoulStoneSingleton;
 import org.microservicios1.models.SoulStone;
 import org.microservicios1.models.Stone;
 
-public class SoulFactory extends ConfigurableStoneFactory{
+public class SoulStoneFactory extends ConfigurableStoneFactory{
 
 
     @Override

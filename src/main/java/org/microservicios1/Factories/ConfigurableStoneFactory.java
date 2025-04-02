@@ -11,8 +11,8 @@ public abstract class ConfigurableStoneFactory {
     // Metodo abstracto que cada subclase debe implementar para crear una piedra (Stone)
     public abstract Stone createStone();
 
-        // Metodo protegido que determina si se debe usar el patrón Singleton o no
-        protected boolean isSingleton(){
+    // Metodo protegido que determina si se debe usar el patrón Singleton o no
+    protected boolean isSingleton(){
 
         // Obtiene el valor de la propiedad del sistema "scope" (puede ser null)
         final var scopeOpt = Optional.of(System.getProperty("scope"));
@@ -26,9 +26,4 @@ public abstract class ConfigurableStoneFactory {
         // Devuelve true si "scope" es "singleton", false en caso contrario
         return "singleton".equals(scope) ? true: false;
     }
-
-
-
-
-
 }
