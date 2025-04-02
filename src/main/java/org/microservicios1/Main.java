@@ -4,6 +4,7 @@ import org.microservicios1.Factories.*;
 import org.microservicios1.Prototype.Prototypes;
 import org.microservicios1.Singletons.MindStoneSingleton;
 import org.microservicios1.models.*;
+import org.microservicios1.services.GuantletService;
 import org.microservicios1.services.GuantletServiceImpl;
 
 public class Main {
@@ -83,7 +84,7 @@ public class Main {
         System.out.println(System.identityHashCode(mindPrototype2));
 */
 //----------------------------------------------------------------------------------------------------------------------
-
+/*
         //Seteo una propiedad. (Puedo elegir entre singleton o prototype)
         System.setProperty("scope", "prototype");
 
@@ -118,6 +119,40 @@ public class Main {
         System.out.println(spaceStone);
         System.out.println(timeStone);
 
+*/
+//----------------------------------------------------------------------------------------------------------------------
+
+        //Seteo una propiedad. (Puedo elegir entre singleton o prototype)
+        System.setProperty("scope", "singleton");
+
+        //Creación de factorías.
+        var mindFactory = new MindStoneFactory();
+        var powerFactory = new PowerStoneFactory();
+        var realityFactory = new RealityStoneFactory();
+        var soulFactory = new SoulStoneFactory();
+        var spaceFactory = new SpaceStoneFactory();
+        var timeFactory = new TimeStoneFactory();
+
+        //
+        final var guantletService = new GuantletServiceImpl();
+
+        // Inyección de dependencias (DI) via setter.
+        guantletService.setMind(mindFactory.createStone());
+        guantletService.setPower(powerFactory.createStone());
+        guantletService.setReality(realityFactory.createStone());
+        guantletService.setSoul(soulFactory.createStone());
+        guantletService.setSpace(spaceFactory.createStone());
+        guantletService.setTime(timeFactory.createStone());
+
+        //
+        guantletService.useGuantlet("mind");
+        guantletService.useGuantlet("power");
+        guantletService.useGuantlet("reality");
+        guantletService.useGuantlet("soul");
+        guantletService.useGuantlet("space");
+        guantletService.useGuantlet("time");
+
+        guantletService.useFullPower();
 
     }
 }
