@@ -10,6 +10,15 @@ import org.microservicios1.services.GuantletServiceImpl;
 
 import java.util.Map;
 
+/**
+ * ✅ Factorías (factories) → Deciden cómo y cuándo se crean objetos.
+ * ✅ Prototipos (prototype) → Permiten clonar objetos en lugar de crearlos de cero.
+ * ✅ Servicios (services) → Contienen lógica de negocio y usan las factorías.
+ * ✅ Configuración (config) → Define Beans y el contexto de Spring.
+ * ✅ Beans → Objetos gestionados por Spring (se crean e inyectan automáticamente).
+ * ✅ Singleton → Asegura que solo haya una única instancia de un objeto.
+ */
+
 public class Main {
     public static void main(String[] args) {
 /*
@@ -216,7 +225,7 @@ public class Main {
 
 final var guantletService = StoneContext.setContext(
     pre -> System.out.println("Do somenthing 1"),
-    pre -> System.out.println("Do somenthing 2")
+    post -> System.out.println("Do somenthing 2")
 );
 
         guantletService.useGuantlet("power");
