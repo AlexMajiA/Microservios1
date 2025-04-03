@@ -1,5 +1,6 @@
 package org.microservicios1;
 
+import org.microservicios1.Configs.StoneContext;
 import org.microservicios1.Factories.*;
 import org.microservicios1.Prototype.Prototypes;
 import org.microservicios1.Singletons.MindStoneSingleton;
@@ -123,7 +124,7 @@ public class Main {
 
 */
 //----------------------------------------------------------------------------------------------------------------------
-
+    /*
         //Seteo una propiedad. (Puedo elegir entre singleton o prototype)
         System.setProperty("scope", "singleton");
 
@@ -134,6 +135,8 @@ public class Main {
         var soulFactory = new SoulStoneFactory();
         var spaceFactory = new SpaceStoneFactory();
         var timeFactory = new TimeStoneFactory();
+
+     */
     /*
         //Creación de instancias para la DI por dependencias.
         var mind = mindFactory.createStone();
@@ -144,7 +147,7 @@ public class Main {
         var time = timeFactory.createStone();
 
      */
-
+    /*
         //Creación de instancias para la DI por constructor (2).
         MindStone mind = (MindStone) mindFactory.createStone();
         PowerStone power = (PowerStone) powerFactory.createStone();
@@ -171,6 +174,8 @@ public class Main {
         //DI por constructor (2)
         final var guantletService = new GuantletServiceImpl(mind, power, reality, soul, space, time);
 
+     */
+
     /*
         //Inyección de dependencias (DI) con constructor.
         final var guantletService = new GuantletServiceImpl(
@@ -194,7 +199,7 @@ public class Main {
         guantletService.setSpace(spaceFactory.createStone());
         guantletService.setTime(timeFactory.createStone());
     */
-
+    /*
         //
         guantletService.useGuantlet("mind");
         guantletService.useGuantlet("power");
@@ -204,6 +209,22 @@ public class Main {
         guantletService.useGuantlet("time");
 
         guantletService.useFullPower();
+
+     */
+
+//----------------------------------------------------------------------------------------------------------------------
+
+final var guantletService = StoneContext.setContext(
+    pre -> System.out.println("Do somenthing 1"),
+    pre -> System.out.println("Do somenthing 2")
+);
+
+        guantletService.useGuantlet("power");
+
+        guantletService.useFullPower();
+
+        // Llamo a mi contexto
+        StoneContext.destroyContext(guantletService);
 
     }
 }

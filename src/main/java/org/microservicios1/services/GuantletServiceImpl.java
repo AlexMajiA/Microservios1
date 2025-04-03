@@ -1,6 +1,7 @@
 package org.microservicios1.services;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -16,6 +17,7 @@ import java.util.Map;
 //@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class GuantletServiceImpl implements GuantletService {
 
     // NO es una inyección de dependencias.
